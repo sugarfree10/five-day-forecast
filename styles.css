@@ -45,7 +45,7 @@ body {
 
 .search-bar {
     height: 55%;
-    width: 40%;
+    width: 20%;
     color: #fdfbfbf6;
     background-color: #6E707A;
     display: flex;
@@ -61,7 +61,18 @@ body {
     position: relative;
 }
 
+#search-input {
+    width: 60%;
+    height: 55%;
+    outline: none;
+    padding: 6px;
+    background-color: #a2a3ac;
+}
 
+#search-input:hover {
+    background-color: #a2a3ac;
+    transform: scale(1.1);
+}
 
 .main-icon {
     width: 30%;
