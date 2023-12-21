@@ -4,9 +4,13 @@ export { showTodayForecast, showFiveDaysForecast };
 function fahrenheitToCelsius(fahrenheit) {
     var celsius = (fahrenheit - 32) * (5 / 9);
     return celsius;
+};
 
-}
-    
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9 / 5) + 32;
+};
+
+
 
 const showTodayForecast = (weatherData, city) => {
     const currentLocation = document.getElementById("today-location");
@@ -16,6 +20,11 @@ const showTodayForecast = (weatherData, city) => {
     const humidityHighlight = document.getElementById("humidity-highlight");
     const vision = document.getElementById("vision");
     const airHigh = document.getElementById("air-highlight");
+    const todayTemp = document.getElementById("today-temp");
+
+    todayTemp.innerHTML = `
+    <h6> ${fahrenheitToCelsius(weatherData.main.temp).toFixed(1)} ℃</h6>
+    `;
 
     currentLocation.innerHTML = `
     <h3> ${city} </h3>
@@ -57,10 +66,10 @@ const showFiveDaysForecast = (pairedWeatherInfo) => {
         const item = pairedWeatherInfo[key][0];
         
         cardsDate.innerHTML += `
-        <div style = "width: 15%; height: 100%; border: 3px solid white; background-color: #1E213A;">
-            <p> ${new Date(item.dt_txt).toUTCString().replace(' GMT', '')} </p>
+        <div style = "width: 15%; height: 170px; background-color: #1E213A; display: flex; flex-direction: column; justify-content: space-evenly;">
+            <p style = "front-size: 3px;"> ${new Date(item.dt_txt).toUTCString().replace(' GMT', '')} </p>
             
-            <h5> ${fahrenheitToCelsius(item.main.temp)} ℃</h5>
+            <h5 class="temperature"> ${fahrenheitToCelsius(item.main.temp).toFixed(1)} ℃</h5>
         </div>
         `
     }
